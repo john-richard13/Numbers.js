@@ -1,19 +1,43 @@
-// Vamos verificar se um dado número digitado pelo usuário é par ou ímpar, negativo ou positivo.
+let entrada;
+let numero;
 
-// Solicita que o usuário insira um número
-let numero = prompt('Digite um número:');
-console.log('Número digitado:', numero);
+// Loop até o usuário digitar um número válido
+do {
+    entrada = prompt('Digite um número, por favor');
 
-// Condicional para verificar se a entrada é um número.
-while (true) {
-    numero = Number(numero);
-    if (isNaN(numero)){
-        numero = prompt('Entrada inválida! Por favor, digite um número.');}
-     else {
-        break;}
+    // Se o usuário cancelar o prompt
+    if (entrada === null) {
+        alert('Entrada cancelada pelo usuário.');
+        break;
     }
 
-alert(`Você digitou um número válido: ${numero}`);
+    // Remove espaços e troca vírgula por ponto
+    entrada = entrada.trim().replace(',', '.');
+
+    // Converte para número
+    numero = Number(entrada);
+
+    // Verifica se NÃO é número
+    if (Number.isNaN(numero)) {
+        alert('Erro! Você digitou um nome ou um valor inválido. Digite apenas números.');
+    }
+
+} while (Number.isNaN(numero));
+
+
+// Só entra aqui se o usuário digitou um número válido
+if (!Number.isNaN(numero)) {
+    if (numero > 0) {
+        alert(`O número ${numero} é POSITIVO.`);
+    } 
+    else if (numero < 0) {
+        alert(`O número ${numero} é NEGATIVO.`);
+    } 
+    else {
+        alert('O número é ZERO.');
+    }
+}
+
 
 // Verifica se o número é par ou ímpar
 if (numero % 2 === 0) {
@@ -24,14 +48,4 @@ if (numero % 2 === 0) {
 
 // O operador % é usado para obter o resto da divisão entre dois números.
 // Já o operador === é usado para comparar valores, verificando se são iguais em valor e tipo.
-
-// Verifica se o número é positivo, negativo ou zero
-if (numero > 0) {
-    alert(`O número ${numero} é positivo.`);
-} else if (numero < 0) {
-    alert(`O número ${numero} é negativo.`);
-} else {
-    alert('O número é zero.');
-}
-
-// Neste caso, usamos os operadores > e < para comparar o número com zero e determinar se é positivo, negativo ou zero.
+alert('Fim do programa.');
